@@ -1,0 +1,22 @@
+<div class="container">
+    <input type="text" name="search" placeholder="Search.." #listfilter (keyup)="0"/>
+    <!--ng-minlength="2" | filteradd:listfilter.value-->
+    <div ng-app="myApp" ng-controller="customersCtrl"> 
+                <table border='1'>
+                  <tr>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th colspan="2">action</th>
+                    </tr>
+                <tr *ngFor="let i of product_data | FilterAdd:listfilter.value">
+                    <td>{{ i.productname }}</td>
+                     <td>{{ i.category }}</td>
+                      <td>{{ i.description }}</td>
+                      <td><a href="#">Edit</a></td>
+                      <td><a href="#" (click)="onDeleteClick(i)">delete</a></td>
+                </tr>
+                </table>
+
+    </div>
+</div>
