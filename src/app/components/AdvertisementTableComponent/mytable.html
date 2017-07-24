@@ -9,7 +9,7 @@
                         <th>Description</th>
                         <th colspan="2">action</th>
                     </tr>
-                <tr *ngFor="let i of product_data | FilterAdd:listfilter.value">
+                <tr *ngFor="let i of retrieveAdvertiements() | FilterAdd:listfilter.value">
                     <td>{{ i.productname }}</td>
                      <td>{{ i.category }}</td>
                       <td>{{ i.description }}</td>

@@ -1,23 +1,28 @@
 import {Component} from '@angular/core';
 import { Pipe, PipeTransform } from '@angular/core';
+import {AdvertisementsServices } from '../../service/advertisement.service';
 @Component({
    selector: '<myTable>',
    templateUrl:'./mytable.html'
 })
 
 export class AdvertisementTable{
-    public product_data:Array<{productname:string,category:string,description:string}>=[];
-    putAdvertise(newAdvertise:any){
+    //public product_data:Array<{productname:string,category:string,description:string}>=[];
+   /* putAdvertise(newAdvertise:any){
         this.product_data.push(newAdvertise);
         //console.log(newAdvertise);
+    }*/
+    constructor(private advertiseService:AdvertisementsServices){}
+    onDeleteClick(i:any){
+       
+       this.advertiseService.deleteAdvertise(i);     
+    }
+    retrieveAdvertiements(){
+       return this.advertiseService.getAllAdvertise();
 
     }
-    onDeleteClick(i:any){
-       let d=this.product_data.indexOf(i);
-        this.product_data.splice(d);
-        
-    }
 }
+
 @Pipe({name: 'FilterAdd'}) 
 
 export class FilterAdd implements PipeTransform { 
