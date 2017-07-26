@@ -1,12 +1,14 @@
 import {Component} from '@angular/core';
 import { Pipe, PipeTransform } from '@angular/core';
 import {AdvertisementsServices } from '../../service/advertisement.service';
+import { Router } from '@angular/router';
 @Component({
    selector: '<myTable>',
    templateUrl:'./mytable.html'
 })
 
 export class AdvertisementTable{
+    router: any;
     //public product_data:Array<{productname:string,category:string,description:string}>=[];
    /* putAdvertise(newAdvertise:any){
         this.product_data.push(newAdvertise);
@@ -14,8 +16,13 @@ export class AdvertisementTable{
     }*/
     constructor(private advertiseService:AdvertisementsServices){}
     onDeleteClick(i:any){
-       
        this.advertiseService.deleteAdvertise(i);     
+    }
+    onEditClick(i:any){
+        //console.log("huhuuh",i);
+        this.router.navigate('Page_2',i);
+        //this.advertiseService.updateAdvertise(i);
+        
     }
     retrieveAdvertiements(){
        return this.advertiseService.getAllAdvertise();

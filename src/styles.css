@@ -7,3 +7,7 @@ table, th, td{
   background-color: black;
   color:white;
 }
+
+nav a.active{
+color: orange;
+}
